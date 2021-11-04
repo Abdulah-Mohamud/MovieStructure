@@ -1,5 +1,7 @@
 package com.MovieStructure;
 
+import org.springframework.jdbc.core.SqlReturnType;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +10,7 @@ public class Film {
 
 
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "film_id")
     private int film_id;
     @Column(name = "title")
@@ -18,14 +21,17 @@ public class Film {
     private int length;
     @Column(name = "rating")
     private String rating;
+    @Column(name="language_id")
+    private int language_id;
 
 
-    public Film(int film_id, String title, String description, int length, String rating) {
+    public Film(int film_id, String title, String description, int length, String rating, int language_id) {
         this.film_id = film_id;
         this.title = title;
         this.description=description;
         this.length=length;
         this.rating = rating;
+        this.language_id=language_id;
     }
 
     public Film() {
@@ -69,5 +75,13 @@ public class Film {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public int getLanguage_id() {
+        return language_id;
+    }
+
+    public void setLanguage_id(int language_id) {
+        this.language_id = language_id;
     }
 }
