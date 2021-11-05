@@ -12,25 +12,25 @@ import org.springframework.web.bind.annotation.*;
 public class MoviesDBApplication {
 
     @Autowired
-    private FilmRepository filmRepository;
+    private MovieRepository movieRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(MoviesDBApplication.class, args);
     }
 
-    @GetMapping("/films")
+    @GetMapping("/movies")
     public @ResponseBody
-    Iterable<Film> getAllFilms() {
-        return filmRepository.findAll();
+    Iterable<Movie> getAllMovies() {
+        return movieRepository.findAll();
     }
 
-    @PostMapping("/addFilm")
+    @PostMapping("/addmovie")
     public @ResponseBody
     String newFilm(@RequestParam int film_id, @RequestParam String title,
                    @RequestParam String description, @RequestParam int length, @RequestParam String rating,
                    @RequestParam int language_id) {
-        Film savedFilm = new Film(film_id,title,description,length,rating,language_id);
-        filmRepository.save(savedFilm);
+        Movie savedMovie = new Movie(film_id,title,description,length,rating,language_id);
+        movieRepository.save(savedMovie);
         return "Film Added Successfully";
     }
 //

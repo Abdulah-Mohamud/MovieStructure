@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name ="film")
-public class Film {
+public class Movie {
 
 
     @Id
@@ -25,7 +25,7 @@ public class Film {
     private int language_id;
 
 
-    public Film(int film_id, String title, String description, int length, String rating, int language_id) {
+    public Movie(int film_id, String title, String description, int length, String rating, int language_id) {
         this.film_id = film_id;
         this.title = title;
         this.description=description;
@@ -34,7 +34,7 @@ public class Film {
         this.language_id=language_id;
     }
 
-    public Film() {
+    public Movie() {
     }
 
     public int getFilm_id() {
