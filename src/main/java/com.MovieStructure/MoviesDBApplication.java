@@ -5,7 +5,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
-//@EnableSwagger2
+//@EnableSwagger2<dependency>
+//   <groupId>mysql</groupId>
+//   <artifactId>mysql-connector-java</artifactId>
+//   <scope>runtime</scope>
+//</dependency>
 @SpringBootApplication
 @RestController
 @RequestMapping("/myNetflix")
@@ -38,6 +42,19 @@ public class MoviesDBApplication {
 //    public String deleteFilm(@PathVariable("film_id") int film_id){
 //        filmRepository.deleteById(film_id);
 //        return "Film successfully deleted";
+//    }
+//
+//    @GetMapping("/films/{id}")
+//    public @ResponseBody Movie getFilm(@PathVariable int film_id) {
+//        return movieRepository.findById(film_id).orElse(null);
+//    }
+//    @PutMapping("films/updatefilm")
+//    public @ResponseBody String updateAFilm(@RequestParam int id, @RequestParam String description) {
+//        Movie updatedFilm = movieRepository.findById(id).orElse(null);
+//        assert updatedFilm != null;
+//        updatedFilm.setDescription(description);
+//        movieRepository.save(updatedFilm);
+//        return "Film description updated";
 //    }
 
 

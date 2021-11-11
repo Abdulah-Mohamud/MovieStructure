@@ -2,7 +2,7 @@ Feature: add movie
 
   As the database manager, I want to add a new film upon release so that database is always up to date for the customers
   Scenario: If the database manager checks and approves to addition of the new title, they should be able to add a new film
-    Given that there are no duplicates
+    Given I want to add a new film
     When I add the film to the database
     Then return film added successfully
     When there is a duplicate film
