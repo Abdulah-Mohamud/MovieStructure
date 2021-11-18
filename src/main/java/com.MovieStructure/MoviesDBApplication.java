@@ -37,12 +37,12 @@ public class MoviesDBApplication {
         movieRepository.save(savedMovie);
         return "Film Added Successfully";
     }
-//
-//    @DeleteMapping("/deleteFilm{film_id")
-//    public String deleteFilm(@PathVariable("film_id") int film_id){
-//        filmRepository.deleteById(film_id);
-//        return "Film successfully deleted";
-//    }
+
+    @DeleteMapping("/deleteMovie{film_id")
+    public String deleteFilm(@PathVariable("film_id") int film_id){
+        movieRepository.deleteById(film_id);
+        return "Film successfully deleted";
+    }
 //
 //    @GetMapping("/films/{id}")
 //    public @ResponseBody Movie getFilm(@PathVariable int film_id) {
