@@ -13,7 +13,7 @@ public class AddFilmStep {
 
     @Given("that there are no duplicates")
     public void thatThereAreNoDuplicates() {
-        newMovie = new Movie(1, "Film1", "Film Description", 60, "PG", 1);
+        newMovie = new Movie(1, "Film1", "Film Description", 60, 1);
     }
 
 

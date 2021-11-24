@@ -3,6 +3,10 @@ package com.MovieStructure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 //@EnableSwagger2<dependency>
@@ -10,8 +14,11 @@ import org.springframework.web.bind.annotation.*;
 //   <artifactId>mysql-connector-java</artifactId>
 //   <scope>runtime</scope>
 //</dependency>
+
+@Service
 @SpringBootApplication
 @RestController
+@CrossOrigin
 @RequestMapping("/myNetflix")
 public class MoviesDBApplication {
 
@@ -28,34 +35,32 @@ public class MoviesDBApplication {
         return movieRepository.findAll();
     }
 
-    @PostMapping("/addmovie")
+    @GetMapping("/movies/{film_id}")
     public @ResponseBody
-    String newFilm(@RequestParam int film_id, @RequestParam String title,
-                   @RequestParam String description, @RequestParam int length, @RequestParam String rating,
-                   @RequestParam int language_id) {
-        Movie savedMovie = new Movie(film_id,title,description,length,rating,language_id);
-        movieRepository.save(savedMovie);
-        return "Film Added Successfully";
+    Movie getMovie (@PathVariable int film_id) {
+        return movieRepository.findById(film_id).orElse(null);
     }
 
-    @DeleteMapping("/deleteMovie{film_id")
-    public String deleteFilm(@PathVariable("film_id") int film_id){
+    @PostMapping(path="/addmovie", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Movie> addAMovie(@RequestBody Movie newMovie){
+        Movie savedMovie = new Movie(newMovie.getFilm_id(),newMovie.getTitle(), newMovie.getDescription(), newMovie.getLength(), newMovie.getLanguage_id());
+        movieRepository.save(savedMovie);
+        return new ResponseEntity<Movie>(savedMovie, HttpStatus.OK);}
+
+    @DeleteMapping("/deletemovie/{film_id}")
+    public String deleteMovie(@PathVariable("film_id") int film_id){
         movieRepository.deleteById(film_id);
-        return "Film successfully deleted";
+        return "Movie successfully deleted";
     }
-//
-//    @GetMapping("/films/{id}")
-//    public @ResponseBody Movie getFilm(@PathVariable int film_id) {
-//        return movieRepository.findById(film_id).orElse(null);
-//    }
-//    @PutMapping("films/updatefilm")
-//    public @ResponseBody String updateAFilm(@RequestParam int id, @RequestParam String description) {
-//        Movie updatedFilm = movieRepository.findById(id).orElse(null);
-//        assert updatedFilm != null;
-//        updatedFilm.setDescription(description);
-//        movieRepository.save(updatedFilm);
-//        return "Film description updated";
-//    }
+
+    @PutMapping("/updatemovie")
+    public @ResponseBody String updateAMovie(@RequestParam int film_id, @RequestParam String description) {
+        Movie updatedMovie = movieRepository.findById(film_id).orElse(null);
+        assert updatedMovie != null;
+        updatedMovie.setDescription(description);
+        movieRepository.save(updatedMovie);
+        return "Movie description updated";
+    }
 
 
 }

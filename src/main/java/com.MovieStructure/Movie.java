@@ -19,18 +19,17 @@ public class Movie {
     private String description;
     @Column(name="length")
     private int length;
-    @Column(name = "rating")
+    @Column(name="rating")
     private String rating;
     @Column(name="language_id")
     private int language_id;
 
 
-    public Movie(int film_id, String title, String description, int length, String rating, int language_id) {
+    public Movie(int film_id, String title, String description, int length, int language_id) {
         this.film_id = film_id;
         this.title = title;
         this.description=description;
         this.length=length;
-        this.rating = rating;
         this.language_id=language_id;
     }
 
@@ -69,19 +68,19 @@ public class Movie {
         this.length = length;
     }
 
-    public String getRating() {
-        return rating;
-    }
-
-    public void setRating(String rating) {
-        this.rating = rating;
-    }
-
     public int getLanguage_id() {
         return language_id;
     }
 
     public void setLanguage_id(int language_id) {
         this.language_id = language_id;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 }
