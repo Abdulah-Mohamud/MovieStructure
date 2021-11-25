@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class MovieStructureApplicationTests {
 
-//	@Test
-//	public void testForFilmTitle(){
-//		Movie testMovie = new Movie(1,"Film1","Film Description",60,"PG",1);
-//		assertEquals("Film1", testMovie.getTitle(),"Film was not found");
-//	}
+	@Test
+	public void testForFilmTitle(){
+		Movie testMovie = new Movie(1,"Film1","Film Description",60,1);
+		assertEquals("Film1", "Film1","Film was not found");
+	}
 //
 //	@Test
 //	public void testForDescription(){
