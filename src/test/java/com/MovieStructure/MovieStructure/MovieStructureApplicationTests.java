@@ -1,6 +1,5 @@
 package com.MovieStructure.MovieStructure;
 
-import com.MovieStructure.Movie;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -9,37 +8,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class MovieStructureApplicationTests {
 
+	Movie testFilm = new Movie("movieName", "The description", 56, 1);
+
+	//////////////////////////////////film constructor tests ////////////////////////////////////////////
 	@Test
-	public void testForFilmTitle(){
-		Movie testMovie = new Movie(1,"Film1","Film Description",60,1);
-		assertEquals("Film1", "Film1","Film was not found");
+	public void testForTitle(){
+		assertEquals("movieName",testFilm.getTitle(),"Film title constructor not working");
 	}
-//
-//	@Test
-//	public void testForDescription(){
-//		Movie testMovie = new Movie(1,"Film1","Film Description",60,"PG",1);
-//		assertEquals("Film Description", testMovie.getDescription(),"Film Description was not found");
-//	}
-//
-//	@Test
-//	public void testForLength(){
-//		Movie testMovie = new Movie(1,"Film1","Film Description",60,"PG",1);
-//		assertEquals(60, testMovie.getLength(),"Desired Film length was not found");
-//	}
-//
-//	@Test
-//	public void testForRating(){
-//		Movie testMovie = new Movie(1,"Film1","Film Description",60,"PG",1);
-//		assertEquals("PG", testMovie.getRating(),"Desired rating was not found");
-//	}
-//
-//	@Test
-//	public void testForLanguage(){
-//		Movie testMovie = new Movie(1,"Film1","Film Description",60,"PG",1);
-//		assertEquals(1, testMovie.getLanguage_id(),"Film is in its desired language");
-//	}
-
-	void contextLoads() {
+	@Test
+	public void testForLanguage(){
+		assertEquals(1,testFilm.getLanguage_id(),"Film language constructor not working");
 	}
-
+	@Test
+	public void testForDescription(){
+		assertEquals( "The description",testFilm.getDescription(),"Film description constructor not working");
+	}
+	@Test
+	public void testForLength(){
+		assertEquals( 56, testFilm.getLength(),"Film length constructor not working");
+	}
 }

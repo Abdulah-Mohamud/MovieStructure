@@ -1,4 +1,4 @@
-package com.MovieStructure;
+package com.MovieStructure.MovieStructure;
 
 import org.springframework.jdbc.core.SqlReturnType;
 
@@ -25,8 +25,7 @@ public class Movie {
     private int language_id;
 
 
-    public Movie(int film_id, String title, String description, int length, int language_id) {
-        this.film_id = film_id;
+    public Movie( String title, String description, int length, int language_id) {
         this.title = title;
         this.description=description;
         this.length=length;

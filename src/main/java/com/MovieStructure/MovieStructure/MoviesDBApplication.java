@@ -1,4 +1,4 @@
-package com.MovieStructure;
+package com.MovieStructure.MovieStructure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @Service
 @SpringBootApplication
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/myNetflix")
 public class MoviesDBApplication {
 
@@ -43,7 +43,7 @@ public class MoviesDBApplication {
 
     @PostMapping(path="/addmovie", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Movie> addAMovie(@RequestBody Movie newMovie){
-        Movie savedMovie = new Movie(newMovie.getFilm_id(),newMovie.getTitle(), newMovie.getDescription(), newMovie.getLength(), newMovie.getLanguage_id());
+        Movie savedMovie = new Movie(newMovie.getTitle(), newMovie.getDescription(), newMovie.getLength(), newMovie.getLanguage_id());
         movieRepository.save(savedMovie);
         return new ResponseEntity<Movie>(savedMovie, HttpStatus.OK);}
 
